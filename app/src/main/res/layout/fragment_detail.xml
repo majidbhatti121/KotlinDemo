@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".ui.main.PlaceholderFragment">
+
+    <TextView
+        android:id="@+id/market_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:hint="Maraket Name"
+        android:textSize="20sp"
+        android:layout_marginTop="5dp">
+    </TextView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/inventory_RecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/market_name"/>
+
+    <!-- <TextView
+         android:id="@+id/section_label"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/market_name"
+         android:layout_marginStart="@dimen/activity_horizontal_margin"
+         android:layout_marginTop="@dimen/activity_vertical_margin"
+         android:layout_marginEnd="@dimen/activity_horizontal_margin"
+         android:layout_marginBottom="@dimen/activity_vertical_margin"
+         app:layout_constraintLeft_toLeftOf="parent"
+         tools:layout_constraintLeft_creator="1"
+         tools:layout_constraintTop_creator="1" />-->
+
+
+
+</RelativeLayout>
