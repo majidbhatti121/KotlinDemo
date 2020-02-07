@@ -33,6 +33,7 @@
             android:layout_height="44dp"
             android:layout_weight="1"
             android:hint="val 1"
+            android:inputType="numberSigned"
             android:textColor="#616161"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -43,6 +44,7 @@
             android:layout_height="44dp"
             android:layout_weight="1"
             android:hint="val 2"
+            android:inputType="numberSigned"
             android:textColor="#616161"
             android:textSize="20sp"
             android:textStyle="bold" />

@@ -19,20 +19,19 @@ import com.example.kotlindemo.R
 import kotlinx.android.synthetic.main.detail_list_item.view.*
 import java.util.zip.Inflater
 
-class InventoryAdapter (val context: Context , val inventory_list: List<Inventory>) : RecyclerView.Adapter<InventoryAdapter.MyViewHolder>()  {
-
-
+class InventoryAdapter(val context: Context, val inventory_list: List<Inventory>) :
+    RecyclerView.Adapter<InventoryAdapter.MyViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.detail_list_item, parent , false)
-        return  MyViewHolder(view)
+        val view = LayoutInflater.from(context).inflate(R.layout.detail_list_item, parent, false)
+        return MyViewHolder(view)
 
 
     }
 
     override fun getItemCount(): Int {
-       return inventory_list.size
+        return inventory_list.size
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -41,71 +40,98 @@ class InventoryAdapter (val context: Context , val inventory_list: List<Inventor
 
     }
 
-public
-
-    inner class MyViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var etVal1: EditText
-        var etVal2 : EditText
-        var tvTotal: TextView
+        var etVal2: EditText
+        var value1: Int = 0
+        var value2: Int = 0
 
         init {
 
-                etVal1 = itemView.findViewById(R.id.txVal1)
-                etVal2 = itemView.findViewById(R.id.txVal2)
-                tvTotal = itemView.findViewById(R.id.txvTotal)
+            etVal1 = itemView.findViewById(R.id.txVal1)
+            etVal2 = itemView.findViewById(R.id.txVal2)
 
 
-                etVal1.addTextChangedListener(object : TextWatcher {
-                    override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
+            etVal1.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(
+                    charSequence: CharSequence,
+                    i: Int,
+                    i1: Int,
+                    i2: Int
+                ) {
 
+                }
+
+                override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
+
+                    inventory_list[adapterPosition].value1
+                    Toast.makeText(context,etVal1.text,Toast.LENGTH_SHORT).show()
+                    val temp : String = etVal1.text.toString()
+
+                    if (!"".equals(temp)){
+                        value1 = temp.toInt()
                     }
 
-                    override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
 
-                       inventory_list[adapterPosition].value1
-                    }
 
-                    override fun afterTextChanged(editable: Editable) {
+                }
 
-                    }
-                })
+                override fun afterTextChanged(editable: Editable) {
+                   itemView.txvTotal.text = (value1.plus(value2).toString())
+
+
+                }
+            })
 
             etVal2.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
+                override fun beforeTextChanged(
+                    charSequence: CharSequence,
+                    i: Int,
+                    i1: Int,
+                    i2: Int
+                ) {
 
                 }
 
                 override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
 
                     inventory_list[adapterPosition].value2
+                    Toast.makeText(context,etVal2.text,Toast.LENGTH_SHORT).show()
+                    val temp : String = etVal2.text.toString()
+                    if (!"".equals(temp)){
+                        value2 = temp.toInt()
+                    }
+
+
 
                 }
 
                 override fun afterTextChanged(editable: Editable) {
 
+                    if("".equals(editable)){
+                        itemView.txvTotal.text = value1.toString()
+                    }
+                        itemView.txvTotal.text = (value1.plus(value2).toString())
 
 
                 }
             })
-
-
-
-
         }
 
 
 
-        fun setInventoryData(inventory: Inventory? , pos : Int){
+        fun setInventoryData(inventory: Inventory?, pos: Int) {
 
             itemView.txvItem.text = inventory!!.item
-            itemView.txVal1.text = etVal1.text
-            itemView.txVal2.text = etVal2.text
-           // itemView.txvTotal.text = etVal1+etVal2
-
+         //   itemView.txVal1.text = value1
+           // itemView.txVal2.text = etVal2.text
+           // itemView.txvTotal.text = (value1.plus(value2).toString())
 
 
         }
+
+
 
     }
 
