@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">KotlinDemo</string>
+    <string name="app_name">BusinessApp</string>
     <string name="title_activity_detail">DetailActivity</string>
     <string name="tab_text_1">Inventory</string>
     <string name="tab_text_2">Promotional</string>

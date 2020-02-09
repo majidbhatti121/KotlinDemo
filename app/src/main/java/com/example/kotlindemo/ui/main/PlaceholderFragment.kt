@@ -1,22 +1,29 @@
 package com.example.kotlindemo.ui.main
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toolbar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlindemo.Adapter.InventoryAdapter
 import com.example.kotlindemo.Adapter.MarketAdapter
+import com.example.kotlindemo.DetailActivity
 import com.example.kotlindemo.Model.InventoryList
 import com.example.kotlindemo.Model.MarketList
 import com.example.kotlindemo.R
+import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_detail.*
+import kotlinx.android.synthetic.main.toolbar_layout.*
 
 /**
  * A placeholder fragment containing a simple view.
@@ -43,6 +50,9 @@ class PlaceholderFragment : Fragment() {
         val intent = activity!!.intent.extras?.get("MarketName")
         marketName.text = intent.toString()
 
+        val  activity : DetailActivity = getActivity() as DetailActivity
+        activity.mtitle.text = marketName.text
+
 
 
         pageViewModel.text.observe(this, Observer<String> {
@@ -53,6 +63,10 @@ class PlaceholderFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+
+        // Populating data in Recyclervie
 
 
         val layoutManager = LinearLayoutManager(activity)

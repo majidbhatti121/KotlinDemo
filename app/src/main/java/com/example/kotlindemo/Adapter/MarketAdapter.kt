@@ -36,7 +36,7 @@ class MarketAdapter(val context : Context, val market_list: List<Market>) : Recy
 
         init {
             itemView.setOnClickListener {
-                Toast.makeText(context, CurrentMarket!!.title  + "Clicked", Toast.LENGTH_SHORT).show()
+              //  Toast.makeText(context, CurrentMarket!!.title  + "Clicked", Toast.LENGTH_SHORT).show()
                 val intent = Intent(context , DetailActivity::class.java)
                     intent.putExtra("MarketName",CurrentMarket!!.title)
                     context.startActivity(intent)

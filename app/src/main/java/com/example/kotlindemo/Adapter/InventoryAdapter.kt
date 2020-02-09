@@ -66,11 +66,17 @@ class InventoryAdapter(val context: Context, val inventory_list: List<Inventory>
                 override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
 
                     inventory_list[adapterPosition].value1
-                    Toast.makeText(context,etVal1.text,Toast.LENGTH_SHORT).show()
+                   // Toast.makeText(context,etVal1.text,Toast.LENGTH_SHORT).show()
                     val temp : String = etVal1.text.toString()
 
                     if (!"".equals(temp)){
                         value1 = temp.toInt()
+                    }
+                    else if ("".equals(temp)){
+                        value1 = 0
+                    }
+                    else if("-".equals(temp)){
+                        value1 = value1
                     }
 
 
@@ -97,11 +103,18 @@ class InventoryAdapter(val context: Context, val inventory_list: List<Inventory>
                 override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
 
                     inventory_list[adapterPosition].value2
-                    Toast.makeText(context,etVal2.text,Toast.LENGTH_SHORT).show()
+                 //   Toast.makeText(context,etVal2.text,Toast.LENGTH_SHORT).show()
                     val temp : String = etVal2.text.toString()
                     if (!"".equals(temp)){
                         value2 = temp.toInt()
                     }
+                    else if ("".equals(temp)){
+                        value2 = 0
+                    }
+                    else if("-".equals(temp)){
+                        value2 = value2
+                    }
+
 
 
 
@@ -109,9 +122,6 @@ class InventoryAdapter(val context: Context, val inventory_list: List<Inventory>
 
                 override fun afterTextChanged(editable: Editable) {
 
-                    if("".equals(editable)){
-                        itemView.txvTotal.text = value1.toString()
-                    }
                         itemView.txvTotal.text = (value1.plus(value2).toString())
 
 
@@ -124,9 +134,8 @@ class InventoryAdapter(val context: Context, val inventory_list: List<Inventory>
         fun setInventoryData(inventory: Inventory?, pos: Int) {
 
             itemView.txvItem.text = inventory!!.item
-         //   itemView.txVal1.text = value1
-           // itemView.txVal2.text = etVal2.text
-           // itemView.txvTotal.text = (value1.plus(value2).toString())
+            itemView.txvTotal.text = (value1.plus(value2).toString())
+
 
 
         }
