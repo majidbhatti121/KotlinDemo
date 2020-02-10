@@ -2,8 +2,10 @@ package com.example.kotlindemo.Adapter
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,14 +16,17 @@ import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlindemo.DetailActivity
 import com.example.kotlindemo.Model.Inventory
+import com.example.kotlindemo.Model.InventoryList
 import com.example.kotlindemo.Model.Market
 import com.example.kotlindemo.R
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.detail_list_item.view.*
 import java.util.zip.Inflater
 
 class InventoryAdapter(val context: Context, val inventory_list: List<Inventory>) :
     RecyclerView.Adapter<InventoryAdapter.MyViewHolder>() {
 
+    var PRIVATE_MODE = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.detail_list_item, parent, false)
@@ -133,12 +138,33 @@ class InventoryAdapter(val context: Context, val inventory_list: List<Inventory>
 
         fun setInventoryData(inventory: Inventory?, pos: Int) {
 
+         /*   val sharedPref: SharedPreferences = this@InventoryAdapter.context.getSharedPreferences("PREF", PRIVATE_MODE)
+            val  editor : SharedPreferences.Editor = sharedPref.edit()
+
+            var gson = Gson()
+            var jsonString = gson.toJson(InventoryList)
+            editor.putString("total value",jsonString)
+            editor.apply()*/
+
+
             itemView.txvItem.text = inventory!!.item
             itemView.txvTotal.text = (value1.plus(value2).toString())
 
+            val sharedPref: SharedPreferences = this@InventoryAdapter.context.getSharedPreferences("PREF", PRIVATE_MODE)
+            val  editor : SharedPreferences.Editor = sharedPref.edit()
+            var gson = Gson()
+            var jsonString = gson.toJson(InventoryList)
+            editor.putString("total value",jsonString)
+            editor.apply()
+            editor.commit()
+
+            Log.d("save",jsonString)
+
+            Log.d("data",inventory.toString())
 
 
         }
+
 
 
 

@@ -23,7 +23,6 @@ import com.example.kotlindemo.R
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_detail.*
-import kotlinx.android.synthetic.main.toolbar_layout.*
 
 /**
  * A placeholder fragment containing a simple view.
@@ -61,21 +60,7 @@ class PlaceholderFragment : Fragment() {
         return root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
-
-
-        // Populating data in Recyclervie
-
-
-        val layoutManager = LinearLayoutManager(activity)
-        layoutManager.orientation = LinearLayoutManager.VERTICAL
-        inventory_RecyclerView.layoutManager = layoutManager
-
-        val adapter = context?.let { InventoryAdapter(it,InventoryList.inventory_items) }
-        inventory_RecyclerView.adapter = adapter
-    }
 
     companion object {
         /**

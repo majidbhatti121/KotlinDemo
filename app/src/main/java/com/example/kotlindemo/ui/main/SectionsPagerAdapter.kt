@@ -5,8 +5,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.example.kotlindemo.DetailActivity
-import com.example.kotlindemo.FragmentThree
-import com.example.kotlindemo.FragmentTwo
+import com.example.kotlindemo.Fragments.DailyFragment
+import com.example.kotlindemo.Fragments.InventoryFragment
+import com.example.kotlindemo.Fragments.PromotionalFragment
 import com.example.kotlindemo.R
 
 private val TAB_TITLES = arrayOf(
@@ -26,12 +27,12 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below)
        when (position) {
-           0 -> return PlaceholderFragment()
+           0 -> return InventoryFragment()
 
-           1 -> return FragmentTwo()
+           1 -> return PromotionalFragment()
 
 
-           else -> return FragmentThree()
+           else -> return DailyFragment()
        }
 
         //return PlaceholderFragment.newInstance(position + 1)

@@ -11,6 +11,20 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+        <Button
+            android:id="@+id/cancel_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Cancel"
+            ></Button>
+
         <TextView
             android:id="@+id/mtitle"
             android:layout_width="wrap_content"
@@ -18,10 +32,21 @@
             android:gravity="center"
             android:minHeight="?actionBarSize"
             android:padding="@dimen/appbar_padding"
+            android:layout_marginLeft="35dp"
             android:text="@string/app_name"
             android:textAlignment="center"
             android:layout_gravity="center"
             android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
+
+        <Button
+            android:id="@+id/okay_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_gravity="center"
+            android:text="Okay"
+            ></Button>
+        </LinearLayout>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"

@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
             val name = username.text.toString()
             val pass = password.text.toString()
 
-            if (name.equals("admin", ignoreCase = true) && pass.equals("admin", ignoreCase = true)){
+            if (name.equals("a", ignoreCase = true) && pass.equals("a", ignoreCase = true)){
                 val intent = Intent(this, HomeActivity::class.java)
                 intent.putExtra("Username",name)
                 startActivity(intent)
